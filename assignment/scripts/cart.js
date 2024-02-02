@@ -4,11 +4,17 @@ console.log('***** Cart Functions *****');
 let basket = [];
 
 function addItem(item) {
-    while(isFull() === false) {
-        basket.push(item);
-        return true;
+    if(isFull() === false) {
+        while(isFull() === false) {
+            basket.push(item);
+            return true;
+        }
     }
+    else if(isFull() === true) {
+        return false;
+    }  
  }
+
 addItem('dog');
 addItem('apples');
 addItem('cat');
@@ -25,10 +31,12 @@ function listItems() {
 listItems();
 
 function empty() {
-    while (basket.length > 0)
+    while(basket.length > 0) {
         basket.pop();
+    }
 }
-empty();
+//empty();
+
 console.log(basket);
 
 const maxItems = 5;
@@ -41,11 +49,20 @@ function isFull() {
     }
 }
 
-// function removeItem(item) {
-//     basket.prototype.indexOf.call(item);
-// }
+function removeItem(item) {
+    if(basket.indexOf(item) < 0) {
+        return null;
+    }
+    else if(basket.length > 0) {
+        basket.indexOf(item);
+        // return basket.indexOf(item);
+        basket.splice(3, 1);
+        return item;
+    }
+}    
 
-// console.log(removeItem('bird'));
+
+console.log(removeItem('bird'));
 
 
 
